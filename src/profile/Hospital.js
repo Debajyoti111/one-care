@@ -1,10 +1,28 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './Patient.css';
 import profile_logo from '../assets/home_logo.svg'
 // import card from '../card/card.js';
 import Logo_page from '../assets/Logo_page.png';
+import axios from "axios";
+import {useLocation} from "react-router-dom";
 
-function Patient() {
+function Hospital() {
+  const search = useLocation().search;
+  const id = new URLSearchParams(search).get('q');
+  const [hospitalData, setHospitalData] = useState({});
+  useEffect(()=>{
+    axios({
+      method:"get",
+      withCredentials: true,
+      url:"http://localhost:3001/hospital_profile",
+      params:{
+        id: id.toString()
+      }
+        }).then((data)=>{
+          console.log(data.data);
+          setHospitalData(data.data);
+        })
+    },[])
   return (
     <div className="profile_parent_container">
       <div className='profile-container'>
@@ -18,9 +36,9 @@ function Patient() {
           <li className='patient__li'>CONTACT US</li>
         </ul>
         <div>
-          <h3>
-            This User Profile!
-          </h3>
+          <h2>
+            {hospitalData.hospitalname} Hospital
+          </h2>
         </div>
         </nav>
         <div className='profile__about'>
@@ -48,4 +66,4 @@ function Patient() {
   )
 }
 
-export default Patient
+export default Hospital

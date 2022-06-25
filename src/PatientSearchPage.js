@@ -359,27 +359,7 @@ export default function PatientSearchPage() {
       id: "50",
     },
   ]);
-
-//   const request = new Request("http://localhost:3001/getPatients", {
-//     method: "GET",
-//   });
-
-//   fetch(request)
-//     .then((response) => {
-//       if (response.status === 200) {
-//         console.log(response);
-//         setPatients(response.data);
-//       } else {
-//         throw new Error("Something went wrong on API server!");
-//       }
-//     })
-//     .then((response) => {
-//       console.debug(response);
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
-
+  
   const [i, CHANGE] = useState(0);
   const [search, setsearch] = useState("");
   const patientsmap = (patients) =>

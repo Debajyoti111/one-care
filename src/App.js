@@ -1,13 +1,15 @@
 import './App.css';
 import LandingPage from './LandingPage';
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import Hospital from './profile/Patient';
+import Hospital from './profile/Hospital';
 // import card from './card/card';
 import Timeline from './card/Timeline';
 import Forma from './form/form.js';
 import Patientprofile from './patient_profile/patient_profile';
 import PatientSearchPage from './PatientSearchPage';
 import LS from "./LS"
+import HLS from "./HLS"
+
 
 function App() {
   return (
@@ -15,6 +17,9 @@ function App() {
       <BrowserRouter> 
       <Routes>
       <Route path="patient/card" element={<Timeline/>}/>
+      </Routes>
+      <Routes>
+      <Route path="hospital_register" element={<HLS/>}/>
       </Routes>
       <Routes>
       <Route path="patient/form" element={<Forma/>}/>
@@ -33,7 +38,7 @@ function App() {
       <Route path="/" element={<LandingPage/>}></Route>
       </Routes>
       <Routes>
-      <Route path="patient-search-page" element={<PatientSearchPage/>}></Route>
+      <Route path="patient-search" element={<PatientSearchPage/>}></Route>
       </Routes>
       </BrowserRouter>
     </div>

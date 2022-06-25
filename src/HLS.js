@@ -4,6 +4,8 @@ import one from './img/6.svg'
 import two from './img/7.svg'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios"
+import { useNavigate } from 'react-router-dom';
 export default function HLS() {
 const [startDate, setStartDate] = useState(new Date());
 const [name, setName] = useState("");
@@ -12,6 +14,10 @@ const [password, setPassword] = useState("");
 const [address, setAddress] = useState("");
 const [city, setCity] = useState("");
 const [pin, setPin] = useState("");
+const [loginname, setLoginName] = useState("");
+const [loginpassword, setLoginPassword] = useState("");
+const navigate = useNavigate();
+
   function sub(e)
   {
     document.querySelector(".containerA").classList.add("sign-up-mode");
@@ -24,12 +30,25 @@ const [pin, setPin] = useState("");
   }
 
   // todo : complete the login and signup function
-  async function login () {
-    
-    
+  async function login (e) {
+    e.preventDefault();
+    await axios({
+        method:"post",
+        data:{
+          name: loginname,
+          password: loginpassword,
+        },
+        withCredentials: true,
+        url:"http://localhost:3001/login-hospital"
+      }).then((res)=>{
+        if(res.status == 200)
+        {
+          navigate(res.data);
+        }
+      })
   }
 
-  async function signup() {
+  async function signup(e) {
     e.preventDefault();
     await axios({
         method:"post",
@@ -58,11 +77,17 @@ const [pin, setPin] = useState("");
             <h2 className="title">Hospital Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" name="name" placeholder="Hospital Name" />
+              <input type="text" name="name" placeholder="Hospital Name" value={loginname}
+              onChange={(e)=>{
+                setLoginName(e.target.value);
+              }}/>
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input name="password" type="password" placeholder="Password" />
+              <input name="password" type="password" placeholder="Password" value={loginpassword} 
+              onChange={(e)=>{
+                setLoginPassword(e.target.value);
+              }}/>
             </div>
             <input type="submit" onSubmit={login} value="Login" className="btn solid" />
           </form>
