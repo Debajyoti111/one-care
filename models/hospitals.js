@@ -20,6 +20,10 @@ const HospitalSchema = new mongoose.Schema({
  city:{
     type: String,
     requied: true
+ },
+ registration:{
+   type: String,
+   required: true
  }
 });
 HospitalSchema.plugin(passportLocalMongoose);

@@ -6,14 +6,14 @@ const PatientSchema = new mongoose.Schema({
     required: true,
   },
   age: {
-    type: Number,
+    type: String,
     required: true,
   },
   gender: {
     type: String,
     required: true,
   },
-  aadhar: {
+  addhar: {
     type: String,
     required: true,
   },
@@ -26,7 +26,7 @@ const PatientSchema = new mongoose.Schema({
     required: true,
   },
   date: {
-    type: Date,
+    type: String,
     required: true,
   },
   height: {
@@ -38,7 +38,7 @@ const PatientSchema = new mongoose.Schema({
     required: true
   },
   weight: {
-    type: Number,
+    type: String,
     required: true,
   },
   medicalHistory: [
@@ -51,6 +51,5 @@ const PatientSchema = new mongoose.Schema({
     },
   ],
 });
-PatientSchema.plugin(passportLocalMongoose);
 const PatientModel = mongoose.model("patientdetails", PatientSchema);
 module.exports = PatientModel;

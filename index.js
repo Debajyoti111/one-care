@@ -4,32 +4,31 @@ const app = express();
 const mongoose = require("mongoose");
 const PatientModel = require("./models/patients");
 const HospitalModel = require("./models/hospitals")
-const session = require("express-session");
-const passport = require("passport");
-const passportLocalMongoose = require("passport-local-mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser")
-
-
+const bcrypt = require ('bcrypt');
+const saltRounds = 5;
 app.use(express.json());
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({
-  secret: process.env.SECRET,
-  resave: false,
-  saveUninitialized: false
-})
-);
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(cors({
+  origin:"http://localhost:3000",
+  credentials: true
+}));
+app.use(bodyParser.urlencoded({extended:true}));
 
 mongoose.connect("mongodb://127.0.0.1:27017/patientdb", { useNewUrlParser: true });
 
-passport.use(PatientModel.createStrategy()); //Creates the Session
-passport.serializeUser(PatientModel.serializeUser()); //Creates the cookie
-passport.deserializeUser(PatientModel.deserializeUser());
-
-
+app.get("/patient_profile", (req,res)=>{
+  console.log(req.query.email);
+  PatientModel.findOne({email: req.query.email}, (err, data)=>{
+    if(!err){
+      // console.log(data);
+      res.send(data);
+    }
+    else{
+      console.log(err);
+    }
+  })
+})
 app.get("/getPatients", (req, res) => {
   PatientModel.find({}, (err, result) => {
     if (err) {
@@ -52,99 +51,79 @@ app.listen(3001, () => {
   console.log("Server is Running! Listening at port 3001!");
 });
 
-app.get("/patient-portfolio/:username", (req, res) => {
-  if (req.isAuthenticated()) {
-    //render the patient portfolio for the particular patient using his username
-  }
-  else {
-    res.redirect("/register/patient");
-  }
-})
-
-app.get("/search-patient/:hospitalname", (req, res)=>{
-  if(req.isAuthenticated())
-  {
-    //render the search page of hospital with it's data
-  }
-  else{
-    res.redirect("/login/hospital");
-  }
-})
-/*Authentication For Patients*/
-app.post("/register/patient", (req, res) => {
-  const patientObject = new PatientModel({
-    username: req.body.fullname,
-    age: req.body.age,
-    gender: req.body.gender,
-    addhar: req.body.addhar,
-    bloodgroup: req.body.bloodgroup,
-    email: req.body.email,
-    date: req.body.date,
-    height: req.body.height,
-    weight: req.body.weight
-  });
-  PatientModel.register(patientObject, req.body.password, (err, user) => {
-    if (!err) {
-      passport.authenticate("local")(req, res, function () {
-        res.redirect("/patient-portfolio/"+req.body.username);
+/*Authentication*/
+app.post("/register-patient", (req, res)=>{
+  PatientModel.findOne({password: req.body.password}, (err, data)=>{
+    if(!data)
+    {
+      const patient = new PatientModel({
+        username: req.body.fullname,
+        age: req.body.age,
+        gender: req.body.gender,
+        addhar: req.body.addhar,
+        bloodgroup: req.body.bloodgroup,
+        email: req.body.email,
+        date: req.body.date,
+        height: req.body.height,
+        password: req.body.password,
+        weight: req.body.weight,
+      });
+      patient.save((err)=>{
+        if(err) console.log(err);
+        else console.log("successfully registered");
       })
     }
-    else{
-      res.redirect("/");
-    }
-  })
-})
-app.post("/login/patient", (req, res) => {
-  const patient = new PatientModel({
-    email: req.body.email,
-    password: req.body.password
-  });
-  req.login(patient, (err) => {
-    if (!err) {
-      passport.authenticate("local")(req, res, function () {
-        res.redirect("/patient-portfolio");
-      })
-    }
-    else{
-      res.redirect("/login/patient");
-    }
-  })
-})
-/*Authentication for Hospitals*/
-app.post("/register/hospital", (req, res) => {
-  const hospitalObject = new HospitalModel({
-    hospitalname: req.body.hospitalname,
-    address: req.body.address,
-    pin: req.body.pin,
-    city: req.body.city
-  }
-  );
-
-  HospitalModel.register(hospitalObject, req.body.password, (err, user) => {
-    if (!err) {
-      passport.authenticate("local")(req, res, function () {
-        res.redirect("/search-patient/"+req.body.hospitalname);
-      })
-    }
-    else{
-      res.redirect("/")
-    }
+    res.send("/patient_profile?q=" + req.body.email);
   })
 })
 
-app.post("/login/hospital", (req, res)=>{
-  const hospital = new HospitalModel({
-    hospitalname: req.body.hospitalname,
-    password: req.body.password
-  });
-  req.login(patient, (err) => {
-    if (!err) {
-      passport.authenticate("local")(req, res, function () {
-        res.redirect("/search-patient");
-      })
+app.post("/login-patient", (req, res)=>{
+  PatientModel.findOne({email:req.body.email, password: req.body.password}, (err, data)=>{
+    console.log(data)
+    if(!data)
+    {
+      //No people found popup
+      res.send("/");
     }
     else{
-      res.redirect("/login/hospital");
+      res.send("/patient_profile?q="+ data.email);
     }
+    
+  })
+})
+
+app.post("/register-hospital", (req, res)=>{
+  HospitalModel.findOne({password: req.body.password}, (err, data)=>{
+    if(!data)
+    {
+      //name, registration, password, address, city, pin
+      const hospital = new HospitalModel({
+        hospitalname: req.body.name,
+        address: req.body.address,
+        pin: req.body.pin,
+        city: req.body.city,
+        password: req.body.password,
+        registration: req.body.registration
+      });
+      hospital.save((err)=>{
+        if(err) console.log(err);
+        else console.log("successfully registered");
+      })
+    }
+    res.send("/hospital_profile?q=" + req.body.registration);
+  })
+})
+
+app.post("/login-hospital", (req, res)=>{
+  HospitalModel.findOne({hospitalname:req.body.name, password: req.body.password}, (err, data)=>{
+    if(!data)
+    {
+      //No people found popup
+      res.send("/");
+    }
+    else{
+      res.send("/hospital_profile?q=" + req.body.registration);
+    }
+    
   })
 })
