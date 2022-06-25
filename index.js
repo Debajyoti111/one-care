@@ -29,6 +29,17 @@ app.get("/patient_profile", (req,res)=>{
     }
   })
 })
+app.get("/hospital_profile", (req,res)=>{
+  HospitalModel.findOne({registration: req.query.id}, (err, data)=>{
+    if(!err){
+      // console.log(data);
+      res.send(data);
+    }
+    else{
+      console.log(err);
+    }
+  })
+})
 app.get("/getPatients", (req, res) => {
   PatientModel.find({}, (err, result) => {
     if (err) {
@@ -122,7 +133,7 @@ app.post("/login-hospital", (req, res)=>{
       res.send("/");
     }
     else{
-      res.send("/hospital_profile?q=" + req.body.registration);
+      res.send("/hospital_profile?q=" + data.registration);
     }
     
   })
