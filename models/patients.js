@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose")
 const PatientSchema = new mongoose.Schema({
-  name: {
+  username: {
     type: String,
     required: true,
   },
@@ -32,6 +32,10 @@ const PatientSchema = new mongoose.Schema({
   height: {
     type: Number,
     required: true,
+  },
+  password: {
+    type: String,
+    required: true
   },
   weight: {
     type: Number,
