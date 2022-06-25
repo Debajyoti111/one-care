@@ -1,0 +1,103 @@
+.profile-container{
+  font-family:  'IBM Plex Sans', sans-serif;
+  /* font-weight: 600; */
+    /* display: flex; */
+    width:100%;
+    height:70vh;
+    /* min-height: fi t-content; */
+    background-color: #1C2367;
+    color:white;
+    margin-bottom:120px;
+    overflow:hidden;
+  }
+  .patient__nav{
+    font-weight: 600;
+    height:20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width:100%;
+  }
+  .patient__list{
+    list-style-type: none;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-around;
+  }
+  .patient__li{
+    margin:20px;
+    padding:20px;
+    border:1px solid #6766FE;
+    border-radius: 10px;
+  }
+  .patient__li:hover{
+    padding:20px;
+    background-color: #6766FE;
+
+  }
+  .patient_bg_design{
+      background-image: url('../assets/shape-bg.png');
+  }
+  .patient__name{
+      font-size:30px;
+  }
+  .profile_pic{
+    /* position: absolute; */
+    width:30%;
+    height:30%;
+    transform:translateX(-80px);
+    /* transform:translateY(-30px); */
+    /* transform: scale(0.1); */
+    background-color: url('../assets/profilephoto.jpg');
+    z-index:3;  
+  }
+  .profile_pic{
+    transform:translateX(700px);
+    height:100px;
+    width:400px;
+  }
+  .profile___about{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .patient__name{
+    font-size: 30px;
+  } 
+   .patient__details{
+    font-family:  'IBM Plex Sans', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:40px;
+    margin-top:70px;
+    margin-left:200px;
+  }
+  .card-container{
+    font-family:  'IBM Plex Sans', sans-serif;
+    font-weight: 900;
+      /* font-weight: 1000; */
+      display: flex;
+      justify-content: center;
+  }
+  .patient__card{
+    position: absolute;
+    margin-top:130px;
+    background-color: rgb(189, 189, 189);
+    border-radius: 10px;
+    height:300px;
+    width:1400px;
+    margin-bottom: 130px;
+}
+
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn:hover{
+  font-size: 20px;;
+  color:white;
+}

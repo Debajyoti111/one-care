@@ -1,0 +1,106 @@
+.parent-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+    min-height: 100vh;
+}
+.timeline-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+    min-height: 100vh;
+    margin:40px 0px;
+}
+.timeline-container::after{
+    background-color: brown;
+    content:'';
+    position: absolute;
+    width:4px;
+    height:100%;
+}
+.timeline-item{
+    /* background-color: red; */
+    transform: translateX(-140px);
+    display: flex;
+    justify-content: flex-start;
+    padding-right: 50px;
+    margin:10px 0;
+    width:50%;
+}
+.timeline-item:nth-child(odd){
+    align-self: flex-end;
+    transform: translateX(60px);
+    justify-content: center;
+    padding-right: 10px;
+}
+.timeline-item:nth-child(even){
+    width:60%;
+}
+.timeline-item-content{
+    background-color: #afaffd;;
+    max-width:70%;
+    padding-left:4px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    max-width: 70%;
+    width:400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding:15px;
+    max-width:100%;
+    width:400px;
+    text-align: right;
+}
+.timeline-item-content:hover{
+    background-color:#8f8fff;
+    box-shadow: 0 0 25px rgb(63, 63, 63);
+}
+.timeline-item-content:nth-child(odd){
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+.timeline-item-content::after{
+    content:'';
+    background-color: white;
+    width:20px;
+    height:20px;
+    position:absolute;
+     background-color:#afaffd;
+    transform: translate(195px,0) rotate(45deg);
+}
+.timeline-item-content:hover::after{
+    background-color: #8f8fff;
+}
+.timeline-item:nth-child(odd) .timeline-item-content::after{
+    right:auto;
+    transform: translate(-23px,0) rotate(45deg);
+}
+.timeline-item-content .tag{
+    color:white;
+    font-size: 12px;
+    font-weight: bold;
+    padding:5px;
+    /* position:absolute; */
+    letter-spacing: 1px;
+    top:5px;
+    left:5px;
+    text-transform: uppercase;
+}
+.timeline-item-content .circle{
+    background-color:purple;
+    width:20px;
+    height:20px;
+    border-radius: 50%;
+    position:absolute;
+    transform: translate(250px,0);
+    z-index: 2;
+    border:4px solid brown;
+}
+.timeline-item:nth-child(odd) .timeline-item-content .circle{
+    transform: translate(-85px,0);
+}
