@@ -1,0 +1,75 @@
+.patient__nav{
+    font-family:  'IBM Plex Sans', sans-serif;
+    color:white;
+    background-color:#1C2367;
+    font-weight: 600;
+    height:20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width:100%;
+  }
+  .patient__list{
+    list-style-type: none;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-around;
+  }
+  .patient__li{
+    color:white;
+    margin:20px;
+    padding:20px;
+    border:1px solid #6766FE;
+    border-radius: 10px;
+  }
+  .patient__li:hover{
+    padding:20px;
+    background-color: #6766FE;
+
+  }
+  .form{
+    display: flex;
+    color:black;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 25px;
+  }
+  .form-card{
+    width:70%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height:80vh;
+    /* border:1px solid black; */
+    margin-left:280px;
+    align-self: center;
+  }
+  .form-input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .input-text{
+    margin:30px;
+    font-size: 20px;
+    padding:20px;
+    border:1px solid #6766FE;
+    border-radius: 30px;
+    width:50%;
+  }
+  .submitbtn{
+    margin:20px;
+    background-color:#6766FE;;
+    color:white;
+    margin:20px;
+    padding:20px;
+    border:1px solid #6766FE;
+    border-radius: 10px;
+  }
+  .submitbtn:hover{
+    background-color:#1C2367;
+  }
+  .button{
+    margin-top:130px;
+  }

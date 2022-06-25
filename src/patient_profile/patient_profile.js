@@ -1,10 +1,29 @@
-import React from 'react'
-import './Patient.css';
+import React, {useEffect, useState} from 'react'
+import './patient_profile.css';
 import profile_logo from '../assets/home_logo.svg'
 // import card from '../card/card.js';
 import Logo_page from '../assets/Logo_page.png';
+import axios from "axios";
+import {useLocation} from "react-router-dom";
+import data from '../card/data';
 
-function Patient() {
+function Patientprofile() {
+  const search = useLocation().search;
+  const email = new URLSearchParams(search).get('q');
+  const [userData, setUserData] = useState({});
+  useEffect(()=>{
+    axios({
+      method:"get",
+      withCredentials: true,
+      url:"http://localhost:3001/patient_profile",
+      params:{
+        email: email.toString()
+      }
+        }).then((data)=>{
+          console.log(data.data);
+          setUserData(data.data);
+        })
+    },[])
   return (
     <div className="profile_parent_container">
       <div className='profile-container'>
@@ -18,9 +37,9 @@ function Patient() {
           <li className='patient__li'>CONTACT US</li>
         </ul>
         <div>
-          <h3>
-            This User Profile!
-          </h3>
+          <h2>
+          Welcome {userData.username}
+          </h2>
         </div>
         </nav>
         <div className='profile__about'>
@@ -28,8 +47,10 @@ function Patient() {
             <img src={profile_logo} alt="" /> 
           </div>  
           <div className="patient__details">
-            <div className="patient__name">Anshu Joshi</div>
-            <div className="patient__bloodgroup">Blood Group A*</div>
+            <div className="patient__name">{userData.username}</div>
+            <div className="patient__bloodgroup">{userData.bloodgroup}</div>
+            <div>{userData.age}</div>
+            <div><span>Height: {userData.height}cm</span> Weight:<span>{userData.weight} Kg</span></div>
           </div>
         </div>
       </div>
@@ -41,11 +62,11 @@ function Patient() {
           Medical History
         </button>
         <button className="btn btn-new">
-          Add new record
+          Log Out
         </button>
       </div>
     </div>
   )
 }
 
-export default Patient
+export default Patientprofile;

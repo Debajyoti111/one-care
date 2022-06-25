@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&display=swap');
-.parent{
-  overflow: auto;
-}
+/* .profile_parent_container{
+  overflow: hidden;
+} */
 .profile-container{
     font-family:  'IBM Plex Sans', sans-serif;
     /* font-weight: 600; */
@@ -11,18 +10,26 @@
       /* min-height: fi t-content; */
       background-color: #1C2367;
       color:white;
-      margin-bottom:100px;
-  
-     
+      margin-bottom:120px;
+      overflow: hidden;
     }
     .patient__nav{
-      font-weight: 800;
+      font-weight: 600;
       height:20%;
       display: flex;
       justify-content: space-around;
       align-items: center;
       width:100%;
     }
+    .landing_logo{
+      position: absolute;
+      transform: translateY(-80px);
+      width:100px;
+      height:100px;
+      margin:30px;
+      border: 2px solid  #6766FE;
+      border-radius: 50%;
+  }
     .patient__list{
       list-style-type: none;
       display: flex;
@@ -41,22 +48,22 @@
   
     }
     .patient_bg_design{
-        background-image: url('./img/8.svg');
+        background-image: url('../assets/shape-bg.png');
     }
     .patient__name{
-        font-size:30px;
+        font-size:50px;
+        font-weight: bold;
     }
     .profile_pic{
-      width:150%;
-      height:150%;
-      background-color: url('./img/8.svg');
+      width:50%;
+      height:50%;
+      background-color: url('../assets/profilephoto.jpg');
       /* z-index:3;   */
     }
     .profile_pic{
-      transform:translateX(1100px);
-
-      height:100px;
-      width:400px;
+      transform:translateX(800px) scale(0.8);
+      height:50px;
+      width:200px;
     }
     .profile___about{
       display: flex;
@@ -66,17 +73,17 @@
     .patient__name{
       font-size: 50px;
       font-weight: bold;
-
     } 
      .patient__details{
       font-family:  'IBM Plex Sans', sans-serif;
+      font-size: 20px;
+      /* font-weight: bold; */
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding:40px;
-      margin-top:-70px;
-      margin-left: -35%
-      
+      margin-top:70px;
+      margin-left:200px;
     }
     .card-container{
       font-family:  'IBM Plex Sans', sans-serif;
@@ -94,7 +101,6 @@
       width:1400px;
       margin-bottom: 130px;
   }
-  
   .button{
     display: flex;
     align-items: center;
@@ -104,36 +110,3 @@
     font-size: 20px;;
     color:white;
   }
-  .Search-Area
-  {
-    background-color: rgb(236,236,236);
-    padding: 20px;
-  }
-  .landing_logo{
-    position: absolute;
-    transform: translateY(-80px);
-    width:100px;
-    height:100px;
-    margin:30px;
-    border: 2px solid  #6766FE;
-    border-radius: 50%;
-}
-.border {
-  margin: 50px;
-  margin-left: 31%;
-  position: relative;
-  background: linear-gradient( #1C2367,#2752e1);
-  width: 610px;
-   height: 55px;
-  border-radius: 50px;
-  padding: 1.5px;
-}
-.inner {
-  background: white;
-  padding: 25px;
-  border-color: white;
-}
-.cardly
-{
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}

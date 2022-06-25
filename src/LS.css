@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
 * {
+  
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,11 +13,13 @@ input {
 }
 
 .containerA {
+  
   position: relative;
   width: 100%;
+  height: 90%;
   background-color: #fff;
   min-height: 100vh;
-  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .forms-containerA {

@@ -9,15 +9,14 @@
 body,
 input {
   font-family: "Poppins", sans-serif;
+  /* overflow: hidden; */
 }
 
 .containerA {
   position: relative;
   width: 100%;
   background-color: #fff;
-  min-height: 100vh;
-  overflow: scroll;
-}
+  min-height: 100vh;}
 
 .forms-containerA {
   position: absolute;
