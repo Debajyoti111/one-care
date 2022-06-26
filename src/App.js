@@ -9,7 +9,8 @@ import Patientprofile from './patient_profile/patient_profile';
 import PatientSearchPage from './PatientSearchPage';
 import LS from "./LS"
 import HLS from "./HLS"
-
+import Contactus from './contactus/Contactus.js';
+import About from "./AboutUs/about"
 
 function App() {
   return (
@@ -17,6 +18,12 @@ function App() {
       <BrowserRouter> 
       <Routes>
       <Route path="patient_history" element={<Timeline/>}/>
+      </Routes>
+      <Routes>
+      <Route path="aboutus" element={<About/>}/>
+      </Routes>
+      <Routes>
+      <Route path="/contactus" element={<Contactus/>}></Route>
       </Routes>
       <Routes>
       <Route path="hospital_register" element={<HLS/>}/>

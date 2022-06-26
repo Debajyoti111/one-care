@@ -42,7 +42,7 @@
     display: flex;
     padding: 100px;
 }
-.btn{
+.btn2{
     font-family:  'IBM Plex Sans', sans-serif;
     font-weight: bold;
     font-size: 15px;
@@ -54,9 +54,10 @@
     border: none;
     transition: 0.3s;
 }
-.btn:hover{
+.btn2:hover{
     cursor:pointer;
     background-color: #1C2367;
+    transform: scale(1.1);
 }
 .doctor{
     height:800px;

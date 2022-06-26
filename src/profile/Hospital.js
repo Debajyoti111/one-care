@@ -39,7 +39,7 @@ function Hospital() {
     }
     function handleAddRecord(e){
       e.preventDefault();
-      navigate("/patient_add?q="+id);
+      navigate("/patient_add?q="+id, {replace: true});
     }
   return (
     <div className="profile_parent_container">
@@ -49,9 +49,9 @@ function Hospital() {
             <img src={Logo_page} className='landing_logo' alt="" /> 
           </div>
         <ul className='patient__list'>
-          <li className='patient__li'>HOME</li>
-          <li className='patient__li'>ABOUT US</li>
-          <li className='patient__li'>CONTACT US</li>
+          <li className='patient__li'><a href="#">HOME</a></li>
+          <li className='patient__li'><a href="/aboutus">ABOUT US</a></li>
+          <li className='patient__li'><a href="/contactus">CONTACT US</a></li>
         </ul>
         <div>
           <h2>
@@ -61,22 +61,22 @@ function Hospital() {
         </nav>
         <div className='profile__about'>
           <div className="profile_pic">
-            <img src={profile_logo} alt="" /> 
+            <img src={profile_logo} alt="" style={{marginTop:"50px",marginLeft:"-90px",height:"300px" }} /> 
           </div>  
           <div className="patient__details">
-            <div className="patient__name">Anshu Joshi</div>
-            <div className="patient__bloodgroup">Blood Group A*</div>
+            <div className="patient__name">{hospitalData.hospitalname}</div>
+            <div className="patient__bloodgroup">{hospitalData.address}</div>
           </div>
         </div>
       </div>
       {/* <card/> */}
       <div>
       </div>
-      <div className="button">
-        <button className="btn btn-med" onClick={handleClick}>
+      <div className="button3">
+        <button className="btn3 btn-med" onClick={handleClick}>
           Search For Patient
         </button>
-        <button className="btn btn-med" onClick={handleAddRecord}>
+        <button className="btn3 btn-med" style={{marginLeft:"2px"}} onClick={handleAddRecord}>
           Add Record
         </button>
       </div>

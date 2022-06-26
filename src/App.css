@@ -1,0 +1,9 @@
+a{
+    color:rgb(164, 232, 255);
+    transition:1s;
+
+}
+a:hover{
+    color:white;
+    text-decoration: none;
+}

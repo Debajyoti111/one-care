@@ -37,9 +37,9 @@ function Patientprofile() {
             <img src={Logo_page} className='landing_logo' alt="" /> 
           </div>
         <ul className='patient__list'>
-          <li className='patient__li'>HOME</li>
-          <li className='patient__li'>ABOUT US</li>
-          <li className='patient__li'>CONTACT US</li>
+          <li className='patient__li '><a href="#" style={{color:"white",underline:"none"}}>HOME</a></li>
+          <li className='patient__li' ><a href="/" style={{color:"white",underline:"none"}}>ABOUT US</a></li>
+          <li className='patient__li'><a href="/contactus" style={{color:"white",underline:"none"}}>CONTACT US</a></li>
         </ul>
         <div>
           <h2>
@@ -49,23 +49,23 @@ function Patientprofile() {
         </nav>
         <div className='profile__about'>
           <div className="profile_pic">
-            <img src={profile_logo} alt="" /> 
+            <img src={profile_logo} alt="" style={{marginTop:"18px",marginLeft:"-30px",height:"300px" }}/> 
           </div>  
-          <div className="patient__details">
+          <div className="patient__details" style={{marginTop:"-40px" }} >
             <div className="patient__name">Name: {userData.username}</div>
-            <div className="patient__bloodgroup">Blood Group: {userData.bloodgroup}</div>
-            <div>Id: {userData._id}</div>
-            <div>Age: {userData.age}</div>
-            <div><span>Height: {userData.height}cm</span> Weight:<span>{userData.weight} Kg</span></div>
+            <div className="patient__bloodgroup"><span style={{fontWeight:"bold"}}>Blood Group :</span> {userData.bloodgroup}</div>
+            <div><span style={{fontWeight:"bold"}}>Id:</span> {userData._id}</div>
+            <div><span style={{fontWeight:"bold"}}>Age:</span> {userData.age}</div>
+            <div><span style={{fontWeight:"bold"}}>Height: {userData.height}cm Weight: {userData.weight} Kg</span > </div>
           </div>
         </div>
       </div>
       {/* <card/> */}
       <div>
       </div>
-      <div className="button">
+      <div className="button3">
         <a href="/patient_history">
-        <button onClick={handleClick} className="btn btn-med">
+        <button onClick={handleClick} className="btn3 btn-med">
           Medical History
         </button>
         </a>

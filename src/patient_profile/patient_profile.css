@@ -101,12 +101,21 @@
       width:1400px;
       margin-bottom: 130px;
   }
-  .button{
+  .button3{
     display: flex;
     align-items: center;
     justify-content: center;
+    
   }
-  .btn:hover{
-    font-size: 20px;;
+  .btn3{
+    border:none;
+    padding:30px;
+    background-color:#6766FE;
+    border-radius: 15px;
+    font-size:15px;
+   }
+  .btn3:hover{
+    font-size: 20px;
     color:white;
+    background-color:#1C2367;
   }

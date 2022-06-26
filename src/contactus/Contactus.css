@@ -1,0 +1,99 @@
+profile-container{
+    font-family:  'IBM Plex Sans', sans-serif;
+    /* font-weight: 600; */
+      /* display: flex; */
+      width:100%;
+      height:70vh;
+      /* min-height: fi t-content; */
+      background-color: #1C2367;
+      color:white;
+      margin-bottom:120px;
+      overflow: hidden;
+    }
+    .patient__nav{
+      font-weight: 600;
+      height:20%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width:100%;
+    }
+    .landing_logo{
+      position: absolute;
+      transform: translateY(-80px);
+      width:100px;
+      height:100px;
+      margin:30px;
+      border: 2px solid  #6766FE;
+      border-radius: 50%;
+  }
+    .patient__list{
+      list-style-type: none;
+      display: flex;
+      /* align-items: center; */
+      justify-content: space-around;
+    }
+    .patient__li{
+      margin:20px;
+      padding:20px;
+      border:1px solid #6766FE;
+      border-radius: 10px;
+    }
+    .patient__li:hover{
+      padding:20px;
+      background-color: #6766FE;
+  
+    }
+    .contactus{
+        display: flex;
+        justify-content: space-around;
+        /* width:50%; */
+        align-items: center;
+        margin-top:90px;
+    }
+    .textarea{
+        color:grey;
+        padding:5px;
+        border:none;
+        border:1px solid #6766FE;
+    }
+    .first-col{
+        width:30%;
+    }
+    .heading{
+        font-size: 30px;
+
+    }
+    .designs{
+        position: absolute;
+    }
+    button{
+        margin-top:20px;
+        background: none;
+        padding:5px;
+        border-radius: 10px;
+        border:1px solid #6766FE;
+    }
+    button:hover{
+        background-color: #6766FE;
+        color:white;
+    }
+    .first-col{
+        /* animation:ani 1s delay;
+         */
+         animation-name: ani;
+         animation-duration: 3s;
+    }
+    @keyframes ani {
+        from{opacity: 0%;}
+        to{opacity:100%;}
+    }
+    .designs{
+      position: absolute;
+      width:150px;
+      height:150px;
+      transform: translate(150px,-380px);
+      opacity: 0.3;
+
+      /* transform: translateX(4px);  */
+    }

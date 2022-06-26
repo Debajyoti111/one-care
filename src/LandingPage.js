@@ -14,8 +14,8 @@ function LandingPage() {
        <div className="landing_name">One<span style={{color:"#1C2367"}}>Care</span> </div>
        <div className="Landing_desc">-Your Medical Portfolio</div>
        <div className="Landing_btn">
-       <a href="/hospital_register"><button className="btn">HOSPITAL</button></a>
-       <a href="/patient_register"><button  className="btn">PATIENT</button></a>
+       <a href="/hospital_register"><button className="btn2">HOSPITAL</button></a>
+       <a href="/patient_register"><button  className="btn2">PATIENT</button></a>
        </div>
        </div>
     </div>

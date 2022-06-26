@@ -88,12 +88,12 @@ export default function PatientSearchPage() {
             <Card.Body className="cardly">
               <Card.Title style={{ fontWeight: "bold" }}>{e.name}</Card.Title>
               <Card.Text style={{}}>
-              <div>Patient Id: {e._id}</div>
-                <div>Age: {e.age}</div>
-                <div>Gender: {e.gender}</div>
-                <div>Bloodgroup: {e.bloodgroup}</div>
-                <div>Height: {e.height}</div>
-                <div>Weight: {e.weight}</div>
+              <div><span style={{fontWeight: 'bold'}}>Patient ID:</span> {e._id}</div>
+                <div><span style={{fontWeight: 'bolder'}}>Age:</span> {e.age}</div>
+                <div><span style={{fontWeight: 'bold'}}>Gender:</span> {e.gender}</div>
+                <div><span style={{fontWeight: 'bold'}}>Bloodgroup:</span> {e.bloodgroup}</div>
+                <div><span style={{fontWeight: 'bold'}}>Height:</span>  {e.height}</div>
+                <div><span style={{fontWeight: 'bold'}}>Weight:</span>  {e.weight}</div>
               </Card.Text>
               <Button value={e._id} onClick={handleClick} variant="light">Go to profile</Button>
             </Card.Body>
@@ -111,9 +111,9 @@ export default function PatientSearchPage() {
               <img src={Logo_page} className="landing_logo" alt="" />
             </div>
             <ul className="patient__list">
-              <li className="patient__li">HOME</li>
-              <li className="patient__li">ABOUT US</li>
-              <li className="patient__li">LOGOUT</li>
+              <li className="patient__li"><a href={"/hospital_profile?q="+hospitalData.registration}>HOME</a></li>
+              <li className="patient__li"><a href="/aboutus">ABOUT US</a></li>
+              <li className='patient__li'><a href="/contactus">CONTACT US</a></li>
             </ul>
             <h3>Logged in as: {hospitalData.hospitalname}</h3>
           </nav>
@@ -121,14 +121,14 @@ export default function PatientSearchPage() {
             <div className="profile_pic">
               <img src={hosimage} alt="" style={{ height: "350px" }} />
             </div>
-            <div className="patient__details">
-              <div className="patient__name">Hospital Name</div>
-              <div className="patient__bloodgroup">Hospital Address</div>
+            <div className="patient__detailser" style={{zIndex: "1"}}>
+              <div className="patient__name">{hospitalData.hospitalname}</div>
+              <div className="patient__bloodgroup">{hospitalData.address}</div>
             </div>
           </div>
         </div>
         <div className="Search-Area">
-          <h1 style={{ fontWeight: "600", marginTop: "-100px" }}>
+          <h1 style={{ fontWeight: "600", marginTop: "-100px", textAlign:"center" }}>
             Search for Patient
           </h1>
           <div className="border">
@@ -165,7 +165,8 @@ export default function PatientSearchPage() {
                     })
                     .slice(i, i + 10)
                 ))}
-          </div>
+          </div >
+          <div style={{display:"flex",justifyContent:"space-between"}}>
           <button
             style={{ margin: "15px" }}
             onClick={() => {
@@ -183,6 +184,7 @@ export default function PatientSearchPage() {
           >
             NEXT
           </button>
+          </div>
         </div>
       </div>
     </FadeIn>
