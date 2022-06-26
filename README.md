@@ -26,4 +26,4 @@ Web App for Hacking Heist
 8. Start the react app.
 - ```npm start```
 
-Have a good time with our service!
+Enjoy with our service!
