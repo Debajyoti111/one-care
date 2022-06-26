@@ -4,10 +4,11 @@ import profile_logo from '../assets/home_logo.svg'
 // import card from '../card/card.js';
 import Logo_page from '../assets/Logo_page.png';
 import axios from "axios";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import data from '../card/data';
 
 function Patientprofile() {
+  const navigate = useNavigate();
   const search = useLocation().search;
   const email = new URLSearchParams(search).get('q');
   const [userData, setUserData] = useState({});
@@ -24,6 +25,10 @@ function Patientprofile() {
           setUserData(data.data);
         })
     },[])
+    function handleClick(e){
+      e.preventDefault();
+      navigate("/patient_history?q="+email);
+    }
   return (
     <div className="profile_parent_container">
       <div className='profile-container'>
@@ -59,12 +64,11 @@ function Patientprofile() {
       <div>
       </div>
       <div className="button">
-        <button className="btn btn-med">
+        <a href="/patient_history">
+        <button onClick={handleClick} className="btn btn-med">
           Medical History
         </button>
-        <button className="btn btn-new">
-          Log Out
-        </button>
+        </a>
       </div>
     </div>
   )

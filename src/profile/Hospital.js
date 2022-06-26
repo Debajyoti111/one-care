@@ -37,6 +37,10 @@ function Hospital() {
         navigate(data.data, {replace:true});
       })
     }
+    function handleAddRecord(e){
+      e.preventDefault();
+      navigate("/patient_add?q="+id);
+    }
   return (
     <div className="profile_parent_container">
       <div className='profile-container'>
@@ -71,6 +75,9 @@ function Hospital() {
       <div className="button">
         <button className="btn btn-med" onClick={handleClick}>
           Search For Patient
+        </button>
+        <button className="btn btn-med" onClick={handleAddRecord}>
+          Add Record
         </button>
       </div>
     </div>

@@ -59,6 +59,22 @@ export default function PatientSearchPage() {
         .slice(i, i + 10)
     );
   };
+  ///patient_profile
+  function handleClick(e){
+    e.preventDefault();
+    console.log(e.target.value);
+    axios({
+      method:"get",
+      withCredentials: true,
+      url:"http://localhost:3001/patient_profile",
+      params:{
+        id: e.target.value
+      }
+    }).then((data)=>{
+      console.log(data.data.email);
+      navigate("/patient_profile?q="+data.data.email);
+    })
+  }
 
   const patient = (e) => {
     return (
@@ -79,7 +95,7 @@ export default function PatientSearchPage() {
                 <div>Height: {e.height}</div>
                 <div>Weight: {e.weight}</div>
               </Card.Text>
-              <Button variant="light">Go to profile</Button>
+              <Button value={e._id} onClick={handleClick} variant="light">Go to profile</Button>
             </Card.Body>
           </Card>
         </AnimationWrapper>

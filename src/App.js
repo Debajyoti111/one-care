@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <BrowserRouter> 
       <Routes>
-      <Route path="patient/card" element={<Timeline/>}/>
+      <Route path="patient_history" element={<Timeline/>}/>
       </Routes>
       <Routes>
       <Route path="hospital_register" element={<HLS/>}/>
