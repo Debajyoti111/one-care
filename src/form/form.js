@@ -1,7 +1,13 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import './form.css';
 import Logo_page from '../assets/Logo_page.png'
 function form() {
+  // const [patient, setPatient] = useState("");
+  // const [hospital, setHospital] = useState("");
+  // const [diagnosis, setDiagnosis] = useState("");
+  // const [medicine, setMedicine] = useState("");
+  // const [date, setDate] = useState("");
+  // const [id, setId] = useState("");
   return (
     <div className="form-container">
        <nav className='patient__nav'>
@@ -23,13 +29,14 @@ function form() {
           Enter the details
         </div>
         <div className="form-card">
-          <form className='form-input'>
-            <textarea type="text" placeholder='Diagonisis for' className='input-text'/>
-            <textarea type="text" placeholder='Hospital Name' className='input-text'/>
-            <textarea type="test" placeholder='Medicines' className='input-text'/>
-            <input type="date" placeholder='date' className='input-text'/>
-            <textarea type="text" placeholder='Key points' className='input-text'/>
-          </form>
+          {/* <form className='form-input'>
+            <input name="patient" value={patient} type="text" placeholder='Patient Name' className='input-text'/>
+            <input name="hospital" value={hospital} type="text" placeholder='Hospital Name' className='input-text'/>
+            <textarea name="diagnosis" value={patient} type="test" placeholder='Diagnosis' className='input-text'/>
+            <textarea name="medicine" value={patient} type="test" placeholder='Medicines' className='input-text'/>
+            <input name="date" value={patient} type="text" placeholder='date' className='input-text'/>
+            <input name="id" value={patient} type="text" placeholder='id' className='input-text'/>
+          </form> */}
         </div>
         <div className="button">
           <button className="submitbtn">

@@ -52,7 +52,7 @@ const [loginPassword, setLoginPassword] = useState("");
           withCredentials: true,
           url:"http://localhost:3001/register-patient"
         }).then((res)=>{
-          if(res.status == 200)
+          if(res.status === 200)
           {
             navigate(res.data);
           }
@@ -71,7 +71,7 @@ const [loginPassword, setLoginPassword] = useState("");
           withCredentials: true,
           url:"http://localhost:3001/login-patient"
         }).then((res)=>{
-          if(res.status == 200)
+          if(res.status === 200)
           {
             navigate(res.data);
           }

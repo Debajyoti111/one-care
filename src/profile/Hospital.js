@@ -4,12 +4,13 @@ import profile_logo from '../assets/home_logo.svg'
 // import card from '../card/card.js';
 import Logo_page from '../assets/Logo_page.png';
 import axios from "axios";
-import {useLocation} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 
 function Hospital() {
   const search = useLocation().search;
   const id = new URLSearchParams(search).get('q');
   const [hospitalData, setHospitalData] = useState({});
+  const navigate = useNavigate();
   useEffect(()=>{
     axios({
       method:"get",
@@ -23,6 +24,19 @@ function Hospital() {
           setHospitalData(data.data);
         })
     },[])
+    function handleClick(e){
+      e.preventDefault();
+      axios({
+        method:"get",
+        withCredentials: true,
+        url:"http://localhost:3001/patient_search",
+        params:{
+          id: id.toString()
+        }
+      }).then((data)=>{
+        navigate(data.data, {replace:true});
+      })
+    }
   return (
     <div className="profile_parent_container">
       <div className='profile-container'>
@@ -55,11 +69,8 @@ function Hospital() {
       <div>
       </div>
       <div className="button">
-        <button className="btn btn-med">
-          Medical History
-        </button>
-        <button className="btn btn-new">
-          Add new record
+        <button className="btn btn-med" onClick={handleClick}>
+          Search For Patient
         </button>
       </div>
     </div>

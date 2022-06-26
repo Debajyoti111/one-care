@@ -41,7 +41,7 @@ const navigate = useNavigate();
         withCredentials: true,
         url:"http://localhost:3001/login-hospital"
       }).then((res)=>{
-        if(res.status == 200)
+        if(res.status === 200)
         {
           navigate(res.data);
         }
@@ -63,7 +63,7 @@ const navigate = useNavigate();
         withCredentials: true,
         url:"http://localhost:3001/register-hospital"
       }).then((res)=>{
-        if(res.status == 200)
+        if(res.status === 200)
         {
           navigate(res.data);
         }

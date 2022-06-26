@@ -47,9 +47,10 @@ function Patientprofile() {
             <img src={profile_logo} alt="" /> 
           </div>  
           <div className="patient__details">
-            <div className="patient__name">{userData.username}</div>
-            <div className="patient__bloodgroup">{userData.bloodgroup}</div>
-            <div>{userData.age}</div>
+            <div className="patient__name">Name: {userData.username}</div>
+            <div className="patient__bloodgroup">Blood Group: {userData.bloodgroup}</div>
+            <div>Id: {userData._id}</div>
+            <div>Age: {userData.age}</div>
             <div><span>Height: {userData.height}cm</span> Weight:<span>{userData.weight} Kg</span></div>
           </div>
         </div>
