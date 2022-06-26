@@ -135,7 +135,7 @@ app.post("/login-patient", (req, res)=>{
 })
 
 app.post("/register-hospital", (req, res)=>{
-  HospitalModel.findOne({password: req.body.password}, (err, data)=>{
+  HospitalModel.findOne({$and:[{password: req.body.password},{registration:req.body.registration}]}, (err, data)=>{
     if(!data)
     {
       //name, registration, password, address, city, pin
@@ -157,7 +157,7 @@ app.post("/register-hospital", (req, res)=>{
 })
 
 app.post("/login-hospital", (req, res)=>{
-  HospitalModel.findOne({hospitalname:req.body.name, password: req.body.password}, (err, data)=>{
+  HospitalModel.findOne({$and:[{registration:req.body.registration, password: req.body.password}]}, (err, data)=>{
     if(!data)
     {
       //No people found popup
