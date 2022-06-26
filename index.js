@@ -19,7 +19,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/patientdb", { useNewUrlParser: true 
 
 app.get("/patient_profile", (req,res)=>{
   console.log(req.query.email);
-  PatientModel.findOne({email: req.query.email}, (err, data)=>{
+  PatientModel.findOne($or[{email: req.query.email}, {_id:req.query._id}], (err, data)=>{
     if(!err){
       // console.log(data);
       res.send(data);
@@ -57,6 +57,20 @@ app.post("/createPatient", async (req, res) => {
 
   res.json(Patient);
 });
+
+app.get("/patient_search", (req, res)=>{
+  HospitalModel.findOne({registration: req.query.id}, (err, data)=>{
+    console.log(data);
+    if(data){
+      const redirectUrl = "/patient_search?q="+req.query.id;
+      res.send(redirectUrl);
+    }
+    else{
+      res.send("/hospital_profile?q="+req.query.id);
+    }
+  })
+})
+
 
 app.listen(3001, () => {
   console.log("Server is Running! Listening at port 3001!");
