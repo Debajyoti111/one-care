@@ -47,7 +47,6 @@ const PatientSchema = new mongoose.Schema({
       hospital: String,
       medicines: String,
       date: String,
-      key_points: String,
     },
   ],
 });
