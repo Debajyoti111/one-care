@@ -14,7 +14,7 @@ const [password, setPassword] = useState("");
 const [address, setAddress] = useState("");
 const [city, setCity] = useState("");
 const [pin, setPin] = useState("");
-const [loginname, setLoginName] = useState("");
+const [loginregistration, setLoginRegistration] = useState("");
 const [loginpassword, setLoginPassword] = useState("");
 const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ const navigate = useNavigate();
     await axios({
         method:"post",
         data:{
-          name: loginname,
+          registration: loginregistration,
           password: loginpassword,
         },
         withCredentials: true,
@@ -77,9 +77,9 @@ const navigate = useNavigate();
             <h2 className="title">Hospital Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" name="name" placeholder="Hospital Name" value={loginname}
+              <input type="text" name="registration" placeholder="Hospital Registration No." value={loginregistration}
               onChange={(e)=>{
-                setLoginName(e.target.value);
+                setLoginRegistration(e.target.value);
               }}/>
             </div>
             <div className="input-field">

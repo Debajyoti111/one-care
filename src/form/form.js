@@ -36,9 +36,9 @@ function Form() {
             <img src={Logo_page} className='landing_logo' alt="" /> 
           </div>
         <ul className='patient__list'>
-          <li className='patient__li'>HOME</li>
-          <li className='patient__li'>ABOUT US</li>
-          <li className='patient__li'>CONTACT US</li>
+          <li className='patient__li'><a href="/">HOME</a></li>
+          <li className='patient__li'><a href="/aboutus">ABOUT US</a></li>
+          <li className='patient__li'><a href="/contactus">CONTACT US</a></li>
         </ul>
         <div>
           <h4>
